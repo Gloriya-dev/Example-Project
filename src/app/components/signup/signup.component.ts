@@ -31,6 +31,9 @@ export class SignupComponent {
       console.log('Sign-up:', this.signUpForm.value);
       alert('Sign-up successful!');
       this.router.navigate(['/signin']);
+    } else {
+      this.signUpForm.markAllAsTouched();
+      return;
     }
   }
 }

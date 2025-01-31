@@ -9,7 +9,7 @@ import { Product } from '../../models/product.model';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent implements OnInit {
-  product!: Product; // Store product details
+  product!: Product;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,11 +25,9 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart() {
     console.log('Product added to cart:', this.product);
-    // Implement actual cart logic here
   }
 
   buyNow() {
     console.log('Buying product:', this.product);
-    // Implement actual checkout logic here
   }
 }

@@ -7,6 +7,11 @@
 form {
   display: flex;
   flex-direction: column;
+  div {
+    small {
+      color: red;
+    }
+  }
 }
 
 input {
@@ -15,9 +20,10 @@ input {
 }
 
 button {
-  background: #ff6f61;
-  color: white;
+  background: #3de2c1;
+  color: #000000;
   padding: 8px;
   border: none;
   cursor: pointer;
+  border-radius: 5px;
 }

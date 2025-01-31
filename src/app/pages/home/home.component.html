@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div class="container">
+  <app-sidebar
+    (searchQueryChanged)="updateSearch($event)"
+    (categoryChanged)="updateCategory($event)"
+  ></app-sidebar>
+  <app-product-list
+    [products]="products"
+    [searchQuery]="searchQuery"
+    [selectedCategory]="selectedCategory"
+  ></app-product-list>
+</div>

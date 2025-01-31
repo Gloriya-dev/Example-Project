@@ -1,0 +1,49 @@
+<div class="container">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    placeholder="Search products..."
+    class="search-input"
+  />
+
+  <div class="product-list">
+    <ng-container
+      *ngFor="let product of products$ | async | searchPipe : searchTerm"
+    >
+      <div class="product-card" (click)="goToProductDetails(product.id)">
+        <img
+          [src]="product.images[0]"
+          alt="{{ product.title }}"
+          class="product-image"
+        />
+        <div class="product-details">
+          <h3>{{ product.title }}</h3>
+          <p class="category-name">Category: {{ product.category.name }}</p>
+          <p class="price">Price: ${{ product.price }}</p>
+        </div>
+      </div>
+
+      <div class="related-products" *ngIf="product.category">
+        <h4>Related Products</h4>
+        <div class="related-list">
+          <ng-container *ngFor="let relatedProduct of products$ | async">
+            <div
+              class="related-card"
+              *ngIf="
+                relatedProduct.category.id === product.category.id &&
+                relatedProduct.id !== product.id
+              "
+            >
+              <img
+                [src]="relatedProduct.images[0]"
+                alt="{{ relatedProduct.title }}"
+              />
+              <p>{{ relatedProduct.title }}</p>
+              <p class="price">$ {{ relatedProduct.price }}</p>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

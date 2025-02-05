@@ -1,0 +1,28 @@
+<h2>Your Cart</h2>
+
+@if (cartItems().length > 0) {
+<div *ngFor="let item of cartItems()">
+  <p>
+    <strong>{{ item.title }}</strong> - ${{ item.price }}
+  </p>
+  <p>
+    Quantity:
+    <input
+      type="number"
+      [value]="item.quantity"
+      (change)="updateQuantity(item.id, $event)"
+      min="1"
+    />
+  </p>
+  <p>Subtotal: ${{ item.price * item.quantity }}</p>
+  <button (click)="removeItem(item.id)">Remove</button>
+  <hr />
+</div>
+
+<p><strong>Total Price:</strong> ${{ totalPrice() }}</p>
+
+<button (click)="clearCart()">Clear Cart</button>
+<button (click)="checkoutForm()">Proceed to Checkout</button>
+} @else {
+<p>Your cart is empty.</p>
+}

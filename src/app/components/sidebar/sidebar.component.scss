@@ -2,4 +2,22 @@
   width: 250px;
   padding: 15px;
   background: #f4f4f4;
+  input {
+    border: 1px solid #d3eae2;
+    width: -webkit-fill-available;
+    height: 30px;
+    outline-color: #d3eae2;
+    padding: 2px 5px;
+  }
+  ul {
+    padding-inline-start: 0px;
+    li {
+      padding: 5px 10px;
+      margin: 3px 0px;
+      background-color: #d3eae2;
+      box-sizing: border-box;
+      border-radius: 6px;
+      list-style-type: none;
+    }
+  }
 }

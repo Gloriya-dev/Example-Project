@@ -1,0 +1,93 @@
+<div class="checkout-container">
+  <h2>Checkout</h2>
+
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <fieldset>
+      <legend>Shipping Details</legend>
+
+      <label>Name:</label>
+      <input type="text" formControlName="name" placeholder="Full Name" />
+      <small
+        *ngIf="
+          checkoutForm.get('name')?.invalid && checkoutForm.get('name')?.touched
+        "
+      >
+        Name is required.
+      </small>
+
+      <label>Email:</label>
+      <input type="email" formControlName="email" placeholder="Email Address" />
+      <small
+        *ngIf="
+          checkoutForm.get('email')?.invalid &&
+          checkoutForm.get('email')?.touched
+        "
+      >
+        Enter a valid email.
+      </small>
+
+      <label>Phone:</label>
+      <input type="text" formControlName="phone" placeholder="Contact Number" />
+      <small
+        *ngIf="
+          checkoutForm.get('phone')?.invalid &&
+          checkoutForm.get('phone')?.touched
+        "
+      >
+        Enter a valid 10-digit phone number.
+      </small>
+
+      <label>Address:</label>
+      <textarea
+        formControlName="address"
+        placeholder="Shipping Address"
+      ></textarea>
+      <small
+        *ngIf="
+          checkoutForm.get('address')?.invalid &&
+          checkoutForm.get('address')?.touched
+        "
+      >
+        Address is required.
+      </small>
+    </fieldset>
+
+    <fieldset>
+      <legend>Order Customizations</legend>
+      <button type="button" (click)="addProduct()">Add Product</button>
+
+      <div formArrayName="products">
+        <div
+          *ngFor="let product of products.controls; let i = index"
+          [formGroupName]="i"
+          class="product-item"
+        >
+          <label>Product Name:</label>
+          <input
+            type="text"
+            formControlName="productName"
+            placeholder="Product Name"
+          />
+
+          <label>Quantity:</label>
+          <input type="number" formControlName="quantity" min="1" />
+
+          <label>Size:</label>
+          <input
+            type="text"
+            formControlName="size"
+            placeholder="Size (e.g. M, L, XL)"
+          />
+
+          <label>Color:</label>
+          <input type="text" formControlName="color" placeholder="Color" />
+
+          <button type="button" (click)="removeProduct(i)">Remove</button>
+        </div>
+      </div>
+    </fieldset>
+
+    <button type="submit" [disabled]="checkoutForm.invalid">Place Order</button>
+    <button type="button" (click)="resetForm()">Reset</button>
+  </form>
+</div>

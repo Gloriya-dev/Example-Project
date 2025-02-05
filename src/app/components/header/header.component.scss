@@ -1,8 +1,10 @@
 .header {
   background-color: #3de2c1;
   color: rgb(8, 59, 82);
-  padding: 10px;
-  text-align: center;
+  padding: 0px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .auth-buttons button {
